@@ -96,4 +96,26 @@ module Exercism
       counted_words
     end
   end
+  class Hamming
+    def initialize (dna_strand1, dna_strand2)
+      @dna_strand1 = dna_strand1
+      @dna_strand2 = dna_strand2
+    end
+
+    def same_length
+      @dna_strand1.length == @dna_strand2.length
+    end
+
+    def check_dna_strands
+      if same_length
+        distance = 0
+        (0..@dna_strand1.length-1).each do |n|
+          distance += 1 if @dna_strand1[n] != @dna_strand2[n]
+        end
+      else
+        distance = "sequences haven't equal length"
+      end
+      distance
+    end
+  end
 end
