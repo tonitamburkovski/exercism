@@ -102,20 +102,43 @@ module Exercism
       @dna_strand2 = dna_strand2
     end
 
-    def same_length
-      @dna_strand1.length == @dna_strand2.length
+    def check_dna
+      @dna_strand1.length == @dna_strand2.length ? check_dna_strands : "sequences haven't equal length"
     end
 
     def check_dna_strands
-      if same_length
-        distance = 0
-        (0..@dna_strand1.length-1).each do |n|
-          distance += 1 if @dna_strand1[n] != @dna_strand2[n]
-        end
-      else
-        distance = "sequences haven't equal length"
+      distance = 0
+      (0..@dna_strand1.length - 1).each do |n|
+        distance += 1 if @dna_strand1[n] != @dna_strand2[n]
       end
       distance
+    end
+  end
+
+  class Raindrops
+    def initialize (number)
+      @number = number
+    end
+
+    def check_number
+      raindrop = ''
+      raindrop = 'Pling' if (@number % 3).zero?
+      raindrop += 'Plang' if (@number % 5).zero?
+      raindrop += 'Plong' if (@number % 7).zero?
+      raindrop = @number.to_s if raindrop.empty?
+      raindrop
+    end
+  end
+
+  class Isogram
+    def initialize (phrase)
+      @phrase = phrase
+    end
+
+    def determine
+      a = @phrase.delete('-')
+      a = a.delete(' ')
+      a.size == a.chars.uniq.size
     end
   end
 end
