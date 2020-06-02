@@ -11,6 +11,6 @@ RSpec.describe Exercism::ScrableScore do
 
   it 'scrable score for the word "squeezy" is 28' do
     scrable_score = Exercism::ScrableScore.new('squeezy')
-    expect(scrable_score.score).to eq(28)
+    expect(scrable_score.score).to eq(28gi)
   end
 end
