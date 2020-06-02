@@ -9,7 +9,7 @@ RSpec.describe Exercism::Isogram do
     expect(isogram.determine).to be true
   end
 
-  it 'the phrase "I am seven year old is not isogram"' do
+  it 'the phrase "I am seven year old" is not isogram' do
     isogram = Exercism::Isogram.new("I'm seven year old")
     expect(isogram.determine).to be false
   end
