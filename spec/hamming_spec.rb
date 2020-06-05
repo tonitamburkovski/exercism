@@ -5,7 +5,7 @@ RSpec.describe Exercism::Hamming do
     expect(hamming.check_dna).to eq(7)
   end
 
-  it "sequences 'GAGCCTACTAACGGGAT' and git 'CATCGTAATGACGGCC' haven't equal length" do
+  it "sequences 'GAGCCTACTAACGGGAT' and 'CATCGTAATGACGGCC' haven't equal length" do
     hamming = Exercism::Hamming.new('GAGCCTACTAACGGGAT', 'CATCGTAATGACGGCC')
     expect(hamming.check_dna).to eq("sequences haven't equal length")
   end

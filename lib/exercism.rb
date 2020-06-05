@@ -219,4 +219,48 @@ module Exercism
       (suma % 10).zero?
     end
   end
+
+  class Clock
+    def initialize(time, minutes)
+      @time = time
+      @minutes = minutes
+    end
+
+    def new_time
+      "#{hour}:#{minutes[1]}"
+    end
+
+    private
+    
+    def hour
+      hour = @time[0, 2].to_i + minutes[0]
+      if hour == 24
+        hour = 0
+      elsif hour == -1
+        hour = 23
+      end
+      hour = "0#{hour}" if hour < 10
+      hour
+    end
+
+    def hour_minutes
+      hour = 0
+      minutes = @time[3, 2].to_i + @minutes.to_i
+      if minutes > 60
+        minutes -= 60
+        hour = 1
+      elsif minutes.negative?
+        minutes = 60 + minutes
+        hour = -1
+      end
+      [hour, minutes]
+    end
+
+    def minutes
+      hour = hour_minutes[0]
+      minutes = hour_minutes[1]
+      minutes = "0#{minutes}" if minutes >= 0 && minutes <= 9
+      [hour, minutes]
+    end
+  end
 end
